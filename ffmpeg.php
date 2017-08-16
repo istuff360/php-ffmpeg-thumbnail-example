@@ -10,6 +10,7 @@ class ffmpeg {
 		$this->ffprobe_path = "/usr/bin/ffprobe";
 		$this->thumbs_path = getcwd()."/thumbs/";
 	}
+	
 	/**
 	 * Get video and codec info using ffprobe
 	 *
@@ -38,17 +39,16 @@ class ffmpeg {
 		
 		if (!in_array('exec', explode(', ', ini_get('disable_functions')))) {
 			//Make thumbs dir
-			if(!file_exists($out_file)){
-				mkdir($out_file, 755);
+			if (!file_exists($out_file)) {
+				mkdir($out_file, 755, true);
 			}
 
 			//Get ffprobe info
 			$stream_info   = $this->ffprobe_info($in_file);
-			
-			$stream_length = floor($stream_info['format']['duration'])/$count;
+			$stream_length = floor($stream_info['format']['duration']) / $count;
 
 			//Loop exec and get video frames
-			for ($i=0; $i<$count; $i++) {
+			for ($i = 0; $i < $count; $i++) {
 				set_time_limit(0);
 				ignore_user_abort(true);
 				$cmd = $this->ffmpeg_path.' -ss '.date('H:i:s', strtotime("00:00:00")+($i*$stream_length)).' -i "'.$in_file.'" -t 00:00:01 -r 1 -f mjpeg "'.$out_file.'/'.$i.'.png"';

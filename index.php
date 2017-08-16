@@ -14,27 +14,27 @@ if(isset($_GET['make_thumbs'])) {
 }
 ?>
 <html>
-<head>
-	<title>Video Thumbnailer Demo Using FFMPEG</title>
-	<script type="text/javascript" src="frame_rotator.js"></script>
-	<script type="text/javascript">
-		/*tell js how many frames to loop*/
-		frameRotator.frames = <?php echo $frame_count ?>;
-	</script>
-</head>
-<body>
-	<h2>Video Thumbnailer Demo Using FFMPEG</h2>
-	<?php if (!file_exists('./thumbs/'.$video_path['filename'].'/0.png')): ?>
-	<p><span id="notice">Video not yet processed, <a href="?make_thumbs" onClick="document.getElementById('notice').innerHTML='Processing please wait...';">click here</a></span></p>
-	<?php else: ?>
-	<p>Roll over the image and wait for a few seconds.</p>
+	<head>
+		<title>Video Thumbnailer Demo Using FFMPEG</title>
+		<script type="text/javascript" src="frame_rotator.js"></script>
+		<script type="text/javascript">
+			/* how many frames to loop */
+			frameRotator.frames = <?php echo $frame_count ?>;
+		</script>
+	</head>
+	<body>
+		<h2>Video Thumbnailer Demo Using FFMPEG</h2>
+		<?php if (!file_exists('./thumbs/'.$video_path['filename'].'/0.png')): ?>
+		<p><span id="notice">Video not yet processed, <a href="?make_thumbs" onClick="document.getElementById('notice').innerHTML='Processing please wait...';">click here</a></span></p>
+		<?php else: ?>
+		<p>Roll over the image and wait for a few seconds.</p>
+		
+		<img src="./thumbs/<?php echo $video_path['filename'] ?>/0.png"
+			 width="200"
+			 height="150"
+			 onmouseover="frameRotator.start(this)"
+			 onmouseout="frameRotator.end(this)" />
 	
-	<img src="./thumbs/<?php echo $video_path['filename'] ?>/0.png"
-		 width="200"
-		 height="150"
-		 onmouseover="frameRotator.start(this)"
-		 onmouseout="frameRotator.end(this)" />
-
-	<?php endif ?>
-</body>
+		<?php endif ?>
+	</body>
 </html>
