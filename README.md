@@ -9,4 +9,5 @@ This little example shows:
  Your need ffmpeg installed:
  
  `apt install ffmpeg`
-
+ 
+![](http://i.imgur.com/o7vdHHC.gif "It should look like..")
