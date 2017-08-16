@@ -1,7 +1,7 @@
 /*
 Sample:
 
-<img src="./frames/GPLFireplace/0.png" 
+<img src="./frames/my-video/0.png" 
      width="160" 
 	 height="120" 
 	 onmouseover="frameRotator.start(this)" 
