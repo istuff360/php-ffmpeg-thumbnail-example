@@ -1,4 +1,4 @@
-Video Thumbnailer and Rotatate Using FFMPEG - Example
+Video Thumbnail-er and  Rotate-er Using FFMPEG - Example
 ---
 
 This little example shows:
